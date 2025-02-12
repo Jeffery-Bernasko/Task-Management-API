@@ -18,4 +18,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
             "(:status IS NULL OR t.status = :status) AND " +
             "(:priority IS NULL OR t.priority = :priority)")
     List<Task> filterTask(@Param("status") TaskStatus status, @Param("priority") TaskPriority priority);
+
+    //Fetch task for specific user
+    List<Task> findTaskByUserId(Long userId);
 }

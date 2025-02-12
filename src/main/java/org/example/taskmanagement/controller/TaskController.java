@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -33,8 +34,8 @@ public class TaskController {
 
     // Create a new task
     @PostMapping("/createTask")
-    public Task createTask(@RequestBody Task task){
-        return taskService.createTask(task);
+    public Task createTask(@RequestBody Task task, @RequestParam Long userId){
+        return taskService.createTask(task, userId);
     }
 
     //update Task
@@ -53,6 +54,12 @@ public class TaskController {
     @PutMapping("/{taskId}/assign/{userId}")
     public  Task assignTaskToUser(@PathVariable Long taskId, @PathVariable Long userId){
         return taskService.assignTaskToUser(taskId,userId);
+    }
+
+    //Get Tasks assigned to a User
+    @GetMapping("/user/{userId}")
+    public List<Task> getUserTasks(@PathVariable Long userId){
+        return taskService.findTaskByUserId(userId);
     }
 
     //Filter task

@@ -29,7 +29,9 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public Task createTask(Task task){
+    public Task createTask(Task task, Long userId){
+        User user = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("User not found"));
+        task.setUser(user);
         return taskRepository.save(task);
     }
 
@@ -69,6 +71,11 @@ public class TaskService {
     // Method to filter task based on status or priority
     public List<Task> filterTask(TaskStatus taskStatus, TaskPriority taskPriority){
         return taskRepository.filterTask(taskStatus,taskPriority);
+    }
+
+    //Fetch tasks for specific user
+     public List<Task> findTaskByUserId(Long userId){
+        return taskRepository.findTaskByUserId(userId);
     }
 }
 
