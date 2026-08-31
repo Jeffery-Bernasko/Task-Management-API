@@ -1,2 +1,6 @@
-package org.example.taskmanagement.enums;public enum UserRole {
+package org.example.taskmanagement.enums;
+
+public enum UserRole {
+    ADMIN,
+    USER
 }

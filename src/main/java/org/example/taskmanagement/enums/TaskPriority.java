@@ -1,2 +1,7 @@
-package org.example.taskmanagement.enums;public enum TaskPriority {
+package org.example.taskmanagement.enums;
+
+public enum TaskPriority {
+    LOW,
+    MEDIUM,
+    HIGH
 }
