@@ -33,7 +33,7 @@ build/
 .vscode/
 
 # Configuration files not to commit
-.env
+*.env
 .env.example
 .env.prod.example
 
